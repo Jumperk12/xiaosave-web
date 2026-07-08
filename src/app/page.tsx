@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Clipboard, Loader2 } from "lucide-react";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function Home() {
   const [urlString, setUrlString] = useState("");
@@ -185,9 +186,14 @@ export default function Home() {
         <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
       </footer>
 
-      {/* Google AdSense Placeholder (Optional Bottom) */}
-      <div className="w-full h-16 bg-[#2a2a2c] mt-auto flex items-center justify-center text-gray-500 text-xs shadow-inner">
-        Google AdSense Banner Space
+      {/* Adsterra Native Banner */}
+      <div className="w-full mt-auto flex items-center justify-center min-h-[100px] bg-[#1a1a1c] border-t border-gray-800">
+        <div id="container-2468dad4a31901929901d57b038f8921"></div>
+        <Script 
+          src="//pl30261030.effectivecpmnetwork.com/2468dad4a31901929901d57b038f8921/invoke.js" 
+          strategy="afterInteractive" 
+          data-cfasync="false" 
+        />
       </div>
     </main>
   );
