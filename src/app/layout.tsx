@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://xiaosave.xyz",
+  },
+  verification: {
+    google: "No6cgBCJIjOJs5N6DUrTNQcf0zoltFTOHZ_5C7QZ4Ic",
   }
 };
 
