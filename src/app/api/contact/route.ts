@@ -15,7 +15,7 @@ export async function POST(req: Request) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_ACCESS_KEY, // Set this in Vercel
+        access_key: process.env.WEB3FORMS_ACCESS_KEY || 'ca6a982d-5e04-46a9-ad32-855d10ade625',
         name: name,
         email: email,
         message: message,
