@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   try {
@@ -9,25 +8,31 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'amineoussi344@gmail.com',
-        pass: process.env.GMAIL_APP_PASSWORD, // Must be set in Vercel Env Variables
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
+      body: JSON.stringify({
+        access_key: process.env.WEB3FORMS_ACCESS_KEY, // Set this in Vercel
+        name: name,
+        email: email,
+        message: message,
+        subject: `New Contact Form Submission from ${name}`,
+        from_name: 'Xiaosave Contact Form'
+      })
     });
 
-    const mailOptions = {
-      from: '"Xiaosave Support" <amineoussi344@gmail.com>', // Hides your real email behind the name
-      to: 'amineoussi344@gmail.com', // Sends the email to yourself
-      subject: `New Contact Form Submission from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      replyTo: email, // If you hit 'Reply' in Gmail, it will reply to the user's email
-    };
+    const result = await response.json();
 
-    await transporter.sendMail(mailOptions);
+    if (result.success) {
+      return NextResponse.json({ success: true });
+    } else {
+      console.error('Web3Forms error:', result);
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    }
 
-    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Email error:', error);
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
