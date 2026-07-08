@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Clipboard, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const [urlString, setUrlString] = useState("");
@@ -176,6 +177,13 @@ export default function Home() {
           </div>
         )}
       </div>
+
+      {/* Footer Links */}
+      <footer className="mt-12 mb-6 w-full flex justify-center space-x-6 text-gray-500 text-sm">
+        <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+        <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+        <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+      </footer>
 
       {/* Google AdSense Placeholder (Optional Bottom) */}
       <div className="w-full h-16 bg-[#2a2a2c] mt-auto flex items-center justify-center text-gray-500 text-xs shadow-inner">
