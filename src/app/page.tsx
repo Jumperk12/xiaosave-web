@@ -195,6 +195,12 @@ export default function Home() {
           data-cfasync="false" 
         />
       </div>
+
+      {/* Adsterra Social Bar */}
+      <Script 
+        src="https://pl30261031.effectivecpmnetwork.com/19/ae/c6/19aec6296ae4fd4c476c9b0e075404c0.js" 
+        strategy="afterInteractive" 
+      />
     </main>
   );
 }
