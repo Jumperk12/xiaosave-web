@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Clipboard, Loader2 } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
+import InstructionCarousel from "@/components/InstructionCarousel";
 
 export default function Home() {
   const [urlString, setUrlString] = useState("");
@@ -179,8 +180,11 @@ export default function Home() {
         )}
       </div>
 
+      {/* Instruction Carousel for New Users */}
+      <InstructionCarousel />
+
       {/* Footer Links */}
-      <footer className="mt-12 mb-6 w-full flex justify-center space-x-6 text-gray-500 text-sm">
+      <footer className="mt-8 mb-6 w-full flex justify-center space-x-6 text-gray-500 text-sm">
         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
         <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
         <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
